@@ -1,10 +1,10 @@
 package com.lucasgp.demo.resources;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,15 +16,14 @@ import com.lucasgp.demo.services.UserService;
 @RequestMapping(value="/users")
 public class UserResource {
 	
-	@Autowired
-	private UserService service;
-
+	@Autowired private UserService service;
+	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<User>> findAll(){
-				
-		List<User> list = service.findAll();		
+	public  ResponseEntity<List<User>> findAll(){
 		
-		return ResponseEntity.ok().body(list);
+		List<User> getUsers = service.findAll();
+		
+		return  ResponseEntity.ok(getUsers);
 	}
 	
 }

@@ -10,12 +10,10 @@ import com.lucasgp.demo.repository.UserRepository;
 
 @Service
 public class UserService {
+	@Autowired private UserRepository repo;
 
-	@Autowired
-	private UserRepository repo;
-	
 	public List<User> findAll(){
-		return repo.findAll();
 		
+		return repo.findAll();
 	}
 }
